@@ -1,7 +1,8 @@
-package com.pluralsight.models;
+package com.pluralsight.CarDealershipAPI.models;
 
 import java.time.LocalDate;
 import java.util.Date;
+import com.pluralsight.models.Vehicle;
 
 public class SalesContract extends com.pluralsight.models.Contract {
     private double sales_tax;
@@ -10,13 +11,12 @@ public class SalesContract extends com.pluralsight.models.Contract {
     private boolean finance_status;
     private String vin;
     private int contract_id;
-    private LocalDate sale_date;
-    private Vehicle vehicle_sold;
+    private Date sale_date;
 
     public SalesContract (){};
 
     public SalesContract(int contract_id, String vin, double sales_tax, double recording_fee, double processing_fee,
-                         boolean finance_status, LocalDate sale_date, Vehicle vehicle_sold) {
+                         boolean finance_status, Date sale_date, Vehicle vehicle_sold) {
         this.contract_id = contract_id;
         this.vin = vin;
         this.sales_tax = sales_tax;
@@ -27,16 +27,26 @@ public class SalesContract extends com.pluralsight.models.Contract {
         this.vehicle_sold = vehicle_sold;
     }
 
-//    public SalesContract(String date_of_contract, Vehicle vehicle_sold, double total_price, double monthly_payment, int contract_id, String vin, double sales_tax, double recording_fee, double processing_fee, boolean finance_status, Date sale_date) {
-//        super(date_of_contract, vehicle_sold, total_price, monthly_payment);
-//        this.contract_id = contract_id;
-//        this.vin = vin;
-//        this.sales_tax = sales_tax;
-//        this.recording_fee = recording_fee;
-//        this.processing_fee = processing_fee;
-//        this.finance_status = finance_status;
-//        this.sale_date = sale_date;
-//    }
+    public SalesContract(int contract_id, String vin, double sales_tax, double recording_fee, double processing_fee, boolean finance_status, Date sale_date) {
+        this.contract_id = contract_id;
+        this.vin = vin;
+        this.sales_tax = sales_tax;
+        this.recording_fee = recording_fee;
+        this.processing_fee = processing_fee;
+        this.finance_status = finance_status;
+        this.sale_date = sale_date;
+    }
+
+    public SalesContract(String date_of_contract, Vehicle vehicle_sold, double total_price, double monthly_payment, int contract_id, String vin, double sales_tax, double recording_fee, double processing_fee, boolean finance_status, Date sale_date) {
+        super(date_of_contract, vehicle_sold, total_price, monthly_payment);
+        this.contract_id = contract_id;
+        this.vin = vin;
+        this.sales_tax = sales_tax;
+        this.recording_fee = recording_fee;
+        this.processing_fee = processing_fee;
+        this.finance_status = finance_status;
+        this.sale_date = sale_date;
+    }
 
     @Override
     public double getTotal_price() {
@@ -138,7 +148,7 @@ public class SalesContract extends com.pluralsight.models.Contract {
         this.contract_id = contract_id;
     }
 
-    public void setSale_date(LocalDate sale_date) {
+    public void setSale_date(Date sale_date) {
         this.sale_date = sale_date;
     }
 
@@ -154,7 +164,7 @@ public class SalesContract extends com.pluralsight.models.Contract {
         return contract_id;
     }
 
-    public LocalDate getSale_date() {
+    public Date getSale_date() {
         return sale_date;
     }
 
