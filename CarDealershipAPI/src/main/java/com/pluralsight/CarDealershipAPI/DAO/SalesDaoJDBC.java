@@ -1,18 +1,20 @@
 package com.pluralsight.CarDealershipAPI.DAO;
 
 import com.pluralsight.CarDealershipAPI.models.SalesContract;
+import com.pluralsight.CarDealershipAPI.models.Vehicle;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class SalesDaoJDBC implements SalesDaoInter {
 
     private final DataSource dataSource;
 
-    private List<SalesContract> salesContracts;
 
     private SalesContract salesContract;
     @Autowired
@@ -30,14 +32,19 @@ public class SalesDaoJDBC implements SalesDaoInter {
              ResultSet results = preparedStatement.executeQuery()) {
 
             while (results.next()){
-                this.salesContracts.add(new SalesContract(
-                        results.getInt(1),
-                        results.getString(2),
-                        results.getDouble(3),
-                        results.getDouble(4),
-                        results.getDouble(5),
-                        results.getBoolean(6),
-                        results.getDate(7)));
+                SalesContract salesContract = createSalesContract(results);
+                salesContracts.add(salesContract);
+//                salesContracts.add(new SalesContract(
+//                        results.getInt(1),
+//                        results.getString(2),
+//                        results.getDouble(3),
+//                        results.getDouble(4),
+//                        results.getDouble(5),
+//                        results.getBoolean(6),
+//                        results.getDate(7)));
+
+//                Vehicle vehicle = createVehicleFromResultSet(results);
+//                vehicles.add(vehicle);
             }
 
         } catch (SQLException e){
@@ -48,6 +55,8 @@ public class SalesDaoJDBC implements SalesDaoInter {
 
     @Override
     public SalesContract getSalesContractById(int id) {
+
+        SalesContract salesContract =new SalesContract();
         String query = "SELECT * FROM sales_contracts WHERE contract_id = ?";
                 try (Connection connection = dataSource.getConnection()){
                     PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -65,11 +74,11 @@ public class SalesDaoJDBC implements SalesDaoInter {
                                 results.getDate(7)
                         );
                     }
-                    return salesContract;
+                    //return this.salesContract;
                 } catch (SQLException e){
                     e.printStackTrace();
                 }
-        return null;
+        return salesContract;
     }
 
     @Override
@@ -108,21 +117,21 @@ public class SalesDaoJDBC implements SalesDaoInter {
         return false;
     }
 
-//    private SalesContract createSalesContract (ResultSet results ) throws SQLException {
-//
-//        SalesContract salesContract = new SalesContract();
-//
-//        salesContract.setContract_id(results.getInt("contract_id"));
-//        salesContract.setVin(results.getString("vin"));
-//        salesContract.setSales_tax(results.getDouble("sales_tax"));
-//        salesContract.setRecording_fee(results.getDouble("recording_fee"));
-//        salesContract.setProcessing_fee(results.getDouble("processing_fee"));
-//        salesContract.setFinance_status(results.getBoolean("finance_status"));
-//        salesContract.setSale_date(results.getDate("sale_date").toLocalDate());
-//
-//        return salesContract;
-//
-//    }
+    private SalesContract createSalesContract (ResultSet results ) throws SQLException {
+
+        SalesContract salesContract = new SalesContract();
+
+        salesContract.setContract_id(results.getInt("contract_id"));
+        salesContract.setVin(results.getString("vin"));
+        salesContract.setSales_tax(results.getDouble("sales_tax"));
+        salesContract.setRecording_fee(results.getDouble("recording_fee"));
+        salesContract.setProcessing_fee(results.getDouble("processing_fee"));
+        salesContract.setFinance_status(results.getBoolean("finance_status"));
+        salesContract.setSale_date(results.getDate("sale_date"));
+
+        return salesContract;
+
+    }
 
 
 }

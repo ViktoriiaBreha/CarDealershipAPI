@@ -4,7 +4,7 @@ import com.pluralsight.CarDealershipAPI.DAO.VehicleDaoInter;
 import com.pluralsight.CarDealershipAPI.DAO.VehicleJDBCDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.pluralsight.models.Vehicle;
+import com.pluralsight.CarDealershipAPI.models.Vehicle;
 
 import java.util.List;
 

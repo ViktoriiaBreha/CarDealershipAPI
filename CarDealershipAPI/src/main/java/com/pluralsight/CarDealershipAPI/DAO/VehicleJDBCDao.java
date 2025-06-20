@@ -1,6 +1,6 @@
 package com.pluralsight.CarDealershipAPI.DAO;
 
-import com.pluralsight.models.Vehicle;
+import com.pluralsight.CarDealershipAPI.models.Vehicle;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

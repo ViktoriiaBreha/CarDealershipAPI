@@ -1,6 +1,6 @@
-package com.pluralsight.models;
+package com.pluralsight.CarDealershipAPI.models;
 
-import com.pluralsight.models.Vehicle;
+import com.pluralsight.CarDealershipAPI.models.Vehicle;
 
 public abstract class Contract {
     protected String date_of_contract;

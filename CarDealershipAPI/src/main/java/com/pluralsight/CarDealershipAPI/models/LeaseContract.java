@@ -1,7 +1,7 @@
 package com.pluralsight.CarDealershipAPI.models;
 
 
-public class LeaseContract extends com.pluralsight.models.Contract {
+public class LeaseContract extends Contract {
 
     private double ending_value;
     private double lease_fee;
@@ -18,7 +18,11 @@ public class LeaseContract extends com.pluralsight.models.Contract {
         this.vehicle_sold = vehicle_sold;
     }
 
-    public LeaseContract(int anInt, double aDouble, double aDouble1, String string) {
+    public LeaseContract(int contract_id, double ending_value, double lease_fee, String vin) {
+        this.contract_id = contract_id;
+        this.ending_value = ending_value;
+        this.lease_fee = lease_fee;
+        this.vin = vin;
     }
 
 //    public LeaseContract(String date_of_contract, String customer_name, String customer_email, Vehicle vehicle_sold, double total_price, double monthly_payment, int contract_id, double ending_value, double lease_fee, String vin) {

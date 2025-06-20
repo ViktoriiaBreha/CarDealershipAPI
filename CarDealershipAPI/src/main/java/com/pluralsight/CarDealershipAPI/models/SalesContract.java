@@ -2,9 +2,9 @@ package com.pluralsight.CarDealershipAPI.models;
 
 import java.time.LocalDate;
 import java.util.Date;
-import com.pluralsight.models.Vehicle;
+import com.pluralsight.CarDealershipAPI.models.Vehicle;
 
-public class SalesContract extends com.pluralsight.models.Contract {
+public class SalesContract extends Contract {
     private double sales_tax;
     private double recording_fee;
     private double processing_fee;

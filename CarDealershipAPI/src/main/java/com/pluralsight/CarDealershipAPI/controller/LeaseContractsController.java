@@ -19,17 +19,17 @@ public class LeaseContractsController {
         this.leaseContractService = leaseContractService;
     }
 
-    @RequestMapping(path = "/lease-contracts", method = RequestMethod.GET)
+    @RequestMapping(path = "/lease_contracts", method = RequestMethod.GET)
     public List<LeaseContract> getAllLeaseContracts() {
         return leaseContractService.getAllLeaseContracts();
     }
 
-    @RequestMapping(path = "/lease-contracts", method = RequestMethod.GET)
-    public LeaseContract getLeaseContractById(@RequestParam int id) {
+    @RequestMapping(path = "/lease_contracts/{id}", method = RequestMethod.GET)
+    public LeaseContract getLeaseContractById(@PathVariable int id) {
         return leaseContractService.getLeaseContractById(id);
     }
 
-    @RequestMapping(path = "/lease-contracts", method = RequestMethod.POST)
+    @RequestMapping(path = "/lease_contracts", method = RequestMethod.POST)
     public boolean addLeaseContract (@RequestBody LeaseContract leaseContract) {
         return leaseContractService.addLeaseContract(leaseContract);
     }

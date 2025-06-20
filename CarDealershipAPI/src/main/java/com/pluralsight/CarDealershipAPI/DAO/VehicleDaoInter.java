@@ -1,7 +1,7 @@
 package com.pluralsight.CarDealershipAPI.DAO;
 
 import java.util.List;
-import com.pluralsight.models.Vehicle;
+import com.pluralsight.CarDealershipAPI.models.Vehicle;
 
 public interface VehicleDaoInter {
 

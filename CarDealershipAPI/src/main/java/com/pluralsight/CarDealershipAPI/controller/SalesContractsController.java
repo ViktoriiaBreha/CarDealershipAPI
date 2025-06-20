@@ -18,17 +18,17 @@ public class SalesContractsController {
         this.salesContractService = salesContractService;
     }
 
-    @RequestMapping(path = "/sales-contracts", method = RequestMethod.GET)
+    @RequestMapping(path = "/sales_contracts", method = RequestMethod.GET)
     public List<SalesContract> getAllSalesContracts() {
         return salesContractService.getAllSalesContracts();
     }
 
-    @RequestMapping(path = "/sales-contracts", method = RequestMethod.GET)
-    public SalesContract getSalesContractById(@RequestParam int id) {
+    @RequestMapping(path = "/sales_contracts/{id}", method = RequestMethod.GET)
+    public SalesContract getSalesContractById(@PathVariable int id) {
         return salesContractService.getSalesContractById(id);
     }
 
-    @RequestMapping(path = "/sales-contracts", method = RequestMethod.POST)
+    @RequestMapping(path = "/sales_contracts", method = RequestMethod.POST)
     public boolean addSalesContract (@RequestBody SalesContract salesContract) {
         return salesContractService.addSalesContract(salesContract);
     }
